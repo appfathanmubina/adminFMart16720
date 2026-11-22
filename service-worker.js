@@ -1,3 +1,11 @@
+// OneSignal Web SDK worker is hosted inside this PWA's own scope.
+try {
+  importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
+  self.FMART_ONESIGNAL_SW_READY = true;
+} catch (error) {
+  console.warn('FMart Admin OneSignal service worker SDK could not be loaded:', error);
+}
+
 /* Dedicated service worker for the FMart Admin PWA.
  * Its narrower scope takes precedence over the FMart Wali/root worker.
  * It owns only caches with the admin-fmart-pwa- prefix.
